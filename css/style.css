@@ -137,3 +137,23 @@ main-container{
     font-size: 0.9rem;
  }
  /*End Generic Styles */
+
+ /* Media Query for Mobile - Extra Small (xs) */
+@media only screen and (max-width: 575px) {
+    .left-side{
+        background: url('../images/bg-main-mobile.png') no-repeat #270E38;
+        background-size: cover;
+        width: 100%;
+        height: 34dvh;
+    }
+    .left-side .card .card-bg{
+        width: 17rem;
+    }
+    .right-side{
+        padding: 0 1.5rem;
+        height: 66dvh;
+    }
+
+
+
+}
