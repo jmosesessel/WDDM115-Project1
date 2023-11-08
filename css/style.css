@@ -181,3 +181,27 @@ main-container{
     }
     
 }
+
+/* Media Query for Larger Tablets - Medium (md) */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .left-side{
+        background: url('../images/bg-main-mobile.png') no-repeat #270E38;
+        background-size: cover;
+        width: 100%;
+        height: 34dvh;
+    }
+    .left-side .card .card-bg{
+        width: 17rem;
+    }
+    figure.card-back {
+        margin: 2rem  25dvw 0 0;
+    }
+    figure.card-front {
+        margin: 2rem 0 0 25dvw;
+    }
+    .right-side{
+        padding: 0 25dvw;
+        height: 66dvh;
+    }
+    
+}
