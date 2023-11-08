@@ -205,3 +205,38 @@ main-container{
     }
     
 }
+
+
+/* Media Query for Standard Laptops and Desktops - Large (lg) */
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .main-container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        min-height: 100dvh;
+    }
+    .left-side{
+        background: url('../images/bg-main-desktop.png') no-repeat #270E38;
+        background-size: cover;
+        width: 30%;
+        height: 100dvh;
+    }
+    .left-side .card .card-bg{
+        width: 17rem;
+    }
+    figure.card-back {
+        position: absolute;
+        margin: 22rem 0rem 0 10rem;
+    }
+    figure.card-front {
+        margin: 17rem 0 0 6rem;
+    }
+    .right-side{
+        align-items: center;
+        width: 70%;
+        padding: 0 13rem;
+        height: 100dvh;
+    }
+    
+}    
+
