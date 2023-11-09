@@ -112,8 +112,23 @@ cardForm.addEventListener("submit", async function (event) {
 	const response = await updateJSONData(formData, data, jsonFileURL);
 	console.log("save response", response);
 
-    
+    // display the thank you page and hide the form n success
+    toggleComplete(response)
+
 });
+
+const toggleComplete = (isComplete) => {
+    const formEl = document.querySelector('#card-form')
+    const thankYouEl = document.querySelector('.complete-wrap')
+
+    if(isComplete){
+        formEl.style.display = 'none'
+        thankYouEl.style.display = 'flex'
+    }else{
+        formEl.style.display = 'flex'
+        thankYouEl.style.display = 'none'
+    }
+}
 
 // function to format numbers only text inputs
 function formatCreditCardNumbers(inputText, maxNum) {
