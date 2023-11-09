@@ -31,6 +31,23 @@ const loadDummyDataOnCard = async () => {
 
 };
 
+// function to inset data on card while user types
+const updateCardName = async () => {
+	document.querySelector(".card-name").textContent =
+		await document.querySelector("#card-form-name").value;
+};
+
+// update card number with the format
+const creditCardInput = document.getElementById("card-form-number");
+
+creditCardInput.addEventListener("keyup", function (event) {
+	const inputText = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+	const formattedText = formatCreditCardNumbers(inputText, 16);
+	document.querySelector(".card-number").textContent = formattedText;
+	event.target.value = formattedText;
+});
+
+
 
 // function to format numbers only text inputs
 function formatCreditCardNumbers(inputText, maxNum) {
