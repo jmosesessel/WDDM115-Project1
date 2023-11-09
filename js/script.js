@@ -30,3 +30,60 @@ const loadDummyDataOnCard = async () => {
     document.querySelector('.cvv').textContent = lastRecord.cvv
 
 };
+
+
+// function to format numbers only text inputs
+function formatCreditCardNumbers(inputText, maxNum) {
+	if (inputText.length > maxNum) {
+		inputText = inputText.slice(0, maxNum);
+	}
+
+	let formattedText = "";
+	for (let i = 0; i < inputText.length; i++) {
+		if (i > 0 && i % 4 === 0) {
+			formattedText += " ";
+		}
+		formattedText += inputText[i];
+	}
+
+	return formattedText;
+}
+
+// Function to update JSON data
+async function updateJSONData(updatedData, jsonFileURL) {
+	try {
+		// Fetch the JSON file
+		const response = await fetch(jsonFileURL);
+
+		if (!response.ok) {
+			throw new Error("Failed to fetch JSON data");
+		}
+
+		// Parse the JSON response
+		const jsonData = await response.json();
+
+		// Update the JSON data as needed
+		// For example, add a new item to an array
+		jsonData.push(updatedData);
+
+		// Convert the updated data back to a JSON string
+		const updatedJSON = JSON.stringify(jsonData);
+
+		// Send a PUT request to update the JSON file on the server
+		const updateResponse = await fetch(jsonFileURL, {
+			method: "PUT",
+			body: updatedJSON,
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		if (!updateResponse.ok) {
+			throw new Error("Failed to update JSON data");
+		}
+
+		console.log("JSON data updated successfully");
+	} catch (error) {
+		console.error(error);
+	}
+}
