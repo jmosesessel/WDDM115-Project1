@@ -48,6 +48,15 @@ creditCardInput.addEventListener("keyup", function (event) {
 });
 
 
+// update card Expiry MM date
+const cardExMM = document.getElementById("card-form-mm");
+cardExMM.addEventListener("keyup", function (event) {
+	const inputText = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+	const formattedText = formatCreditCardNumbers(inputText, 2);
+	document.querySelector(".exp-mm").textContent = formattedText;
+	event.target.value = formattedText;
+});
+
 
 // function to format numbers only text inputs
 function formatCreditCardNumbers(inputText, maxNum) {
