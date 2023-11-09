@@ -66,6 +66,15 @@ cardExYY.addEventListener("keyup", function (event) {
 	event.target.value = formattedText;
 });
 
+// update card CVV
+const cardCVV = document.getElementById("card-form-cvv");
+cardCVV.addEventListener("keyup", function (event) {
+	const inputText = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+	const formattedText = formatCreditCardNumbers(inputText, 3);
+	document.querySelector(".cvv").textContent = formattedText;
+	event.target.value = formattedText;
+});
+
 
 // function to format numbers only text inputs
 function formatCreditCardNumbers(inputText, maxNum) {
