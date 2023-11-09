@@ -11,45 +11,45 @@ body{
     letter-spacing: 0.12rem;
     text-shadow: 0px 0px black;
 }
-main-container{
+.main-container{
     display: flex;
     flex-direction: column;
     width: 100%;
     min-height: 100dvh;
  }
- card-form{
+ .card-form{
     margin: 5rem 0;
  }
- orm-group{
+ form-group{
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
     margin-bottom: 1rem }
- card-form label{
+ .card-form label{
     text-transform: uppercase;
     font-size: 0.7rem;
  }
- card-form input{
+ .card-form input{
     padding: 0.7rem;
     border: 1px solid rgb(197, 194, 194);
     border-radius: 5px;
  }
- card-form-exp-cvv-wrap{
+ .card-form-exp-cvv-wrap{
     display: flex;
     gap: 0.5rem;
     
  }
- card-form-exp-wrap, .card-form-cvv-wrap{
+ .card-form-exp-wrap, .card-form-cvv-wrap{
     width: 50%;
  }
- card-exp-input-wrap{
+ .card-exp-input-wrap{
     display: flex;
     gap: 0.5rem;
  }
- card-exp-input-wrap input{
+ .card-exp-input-wrap input{
     width: 50%;
  }
- button{
+ .button{
     background-color:  #270E38;
     color: white;
     width: 100%;
@@ -57,7 +57,7 @@ main-container{
     border: 1px solid rgb(197, 194, 194);
     border-radius: 5px;
  }
- cvv{
+ .cvv{
     position: absolute;
     top: 4rem;
     margin-right: 2.5rem;
@@ -96,7 +96,7 @@ main-container{
     width: 3rem;
     justify-content: end;
  }
- right-side{
+ .right-side{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,22 +116,22 @@ main-container{
     position: relative;
     top: -6rem;
  }
- complete-wrap {
+ .complete-wrap {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
  }
- complete-check{
+ .complete-check{
     display: inline-block;
     margin: 2rem 0;
  }
- thank-you-text{
+ .thank-you-text{
     text-transform: uppercase;
     margin-bottom: 1rem;
  }
- success-message {
+ .success-message {
     margin-bottom: 2.5rem;
     color: gray;
     font-size: 0.9rem;
