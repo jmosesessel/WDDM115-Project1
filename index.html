@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
+		<!--added icon and image-->
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./images/favicon-32x32.png"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./css/style.css" />
+		<title>WDDM-114 - Project 1 collaboation group</title>
+	</head>
+	<body>
+		<main class="main-container">
+			<!-- Card Section Start -->
+			<!--add left side card back-->
+			<section class="left-side">
+				<figure class="card-back card">
+					<img
+						class="card-back-bg card-bg"
+						src="./images/bg-card-back.png"
+						alt="card back side"
+					/>
+					<h3 class="cvv">000</h3>
+				</figure>
+				<!--add front side card-->
+				<figure class="card-front card">
+					<img
+						class="card-front-bg card-bg"
+						src="./images/bg-card-front.png"
+						alt="card front side"
+					/>
+					<!--add card logo-->
+					<img
+						class="card-logo"
+						src="./images/card-logo.svg"
+						alt=""
+					/>
+					<!--add card number,name,expiry-->
+					<h3 class="card-number">0000 0000 0000 0000</h3>
+					<div class="card-name-expiry-wrap">
+						<h4 class="card-name">Jane Appleseed</h4>
+						<div class="card-expiry-wrap">
+							<h4 class="exp-mm">00</h4>
+							/
+							<h4 class="exp-yy">00</h4>
+						</div>
+					</div>
+				</figure>
+			</section>
+			<!-- Card Section End -->
+
+			<section class="right-side">
+				<!-- Form Start -->
+				<!--add card form -->
+				<form id="card-form" class="card-form" action="">
+					<form-group>
+						<label for="card-form-name">Card Holder Name</label>
+						<input
+							onkeyup="updateCardName()"
+							type="text"
+							name="card-form-name"
+							id="card-form-name"
+							autocomplete="off"
+							placeholder="eg. Jane Appleseed"
+							required
+						/>
+					</form-group>
+					<form-group>
+						<!--add number on card form -->
+						<label for="card-form-number">Card Number</label>
+						<input
+							type="text"
+							name="card-form-number"
+							id="card-form-number"
+							minlength="0"
+							maxlength="20"
+							autocomplete="off"
+							placeholder="eg. 1234567890123456"
+							required
+						/>
+					</form-group>
+					<!--add card expiry-->
+					<div class="card-form-exp-cvv-wrap">
+						<form-group class="card-form-exp-wrap">
+							<label for="card-form-mm">Exp. Date (MM/YY)</label>
+							<div class="card-exp-input-wrap">
+								<input
+									type="text"
+									name="card-form-mm"
+									id="card-form-mm"
+									placeholder="MM"
+									minlength="0"
+									maxlength="2"
+									autocomplete="off"
+									required
+								/>
+
+								<input
+									type="text"
+									name="card-form-yy"
+									id="card-form-yy"
+									placeholder="YY"
+									minlength="0"
+									maxlength="2"
+									autocomplete="off"
+									required
+								/>
+							</div>
+						</form-group>
+						<!--add cvv in card-->
+
+						<form-group class="card-form-cvv-wrap">
+							<label for="card-form-cvv">CVV</label>
+							<input
+								type="text"
+								name="card-form-cvv"
+								id="card-form-cvv"
+								placeholder="eg. 123"
+								minlength="0"
+								maxlength="3"
+								autocomplete="off"
+								required
+							/>
+						</form-group>
+					</div>
+					<!--add confirm button-->
+					<div class="confirm-button-wrap">
+						<button id="submit-btn" class="button" type="submit">
+							Confirm
+						</button>
+					</div>
+				</form>
+				<!-- Form End -->
+
+				<!--  add Start Thank You Box -->
+				<div class="complete-wrap">
+					<svg
+						class="complete-check"
+						width="80"
+						height="80"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<circle cx="40" cy="40" r="40" fill="url(#a)" />
+						<path
+							d="M28 39.92 36.08 48l16-16"
+							stroke="#fff"
+							stroke-width="3"
+						/>
+						<defs>
+							<linearGradient
+								id="a"
+								x1="-23.014"
+								y1="11.507"
+								x2="0"
+								y2="91.507"
+								gradientUnits="userSpaceOnUse"
+							>
+								<stop stop-color="#6348FE" />
+								<stop offset="1" stop-color="#610595" />
+							</linearGradient>
+						</defs>
+					</svg>
+
+					<h2 class="thank-you-text">Thank you!</h2>
+					<p class="success-message">We've added your card details</p>
+					<button id="continue-btn" class="button" type="submit">
+						Continue
+					</button>
+				</div>
+				<!-- add end thank you box -->
+			</section>
+		</main>
+
+		<script src="./js/script.js"></script>
+	</body>
+</html>

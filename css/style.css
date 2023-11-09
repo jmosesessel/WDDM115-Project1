@@ -64,13 +64,13 @@ main-container{
     color: white;
     font-size: 0.8rem;
  }
- igure .card-logo {
+ figure .card-logo {
     position: absolute;
     width: 3rem;
     left: 1rem;
     top: 1rem;
  }
- igure .card-number{
+ figure .card-number{
     position: absolute;
     color: white;
     top: 5rem;
@@ -79,7 +79,7 @@ main-container{
     font-size: 1.1rem;
     /* letter-spacing: 0.18rem; */
  }
- igure .card-name-expiry-wrap{
+ figure .card-name-expiry-wrap{
     color: white;
     position: absolute;
     top: 7rem;
@@ -91,7 +91,7 @@ main-container{
     text-transform: uppercase;
     letter-spacing: 2px;
  }
- igure .card-expiry-wrap{
+ figure .card-expiry-wrap{
     display: flex;
     width: 3rem;
     justify-content: end;
@@ -102,13 +102,13 @@ main-container{
     justify-content: center;
     height: 100%;
  }
- igure.card-back {
+ figure.card-back {
     display: flex;
     justify-content: end;
     margin: 2rem 1.5rem;
     position: relative;
  }
- igure.card-front {
+ figure.card-front {
     display: flex;
     flex-direction: column;
     justify-content: start;
