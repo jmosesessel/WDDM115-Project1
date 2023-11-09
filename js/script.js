@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async function (event) {
 	await loadDummyDataOnCard();
 });
 
-const jsonFileURL = "./js/data.json"
+const jsonFileURL = "./js/data.json";
 
 // read the JSON data
 async function readJSONData() {
@@ -20,15 +20,14 @@ const loadDummyDataOnCard = async () => {
 	const data = await readJSONData();
 	console.log("data", data);
 
-    // get the record with 'isDummy' =  true
-    const lastRecord = await data.filter(item => item.isDummy == true)[0]
-    console.log('lastRecord', lastRecord)
-    document.querySelector('.card-number').textContent = lastRecord.cardNumber
-    document.querySelector('.card-name').textContent = lastRecord.name
-    document.querySelector('.exp-mm').textContent = lastRecord.expMM
-    document.querySelector('.exp-yy').textContent = lastRecord.expYY
-    document.querySelector('.cvv').textContent = lastRecord.cvv
-
+	// get the record with 'isDummy' =  true
+	const lastRecord = await data.filter((item) => item.isDummy == true)[0];
+	console.log("lastRecord", lastRecord);
+	document.querySelector(".card-number").textContent = lastRecord.cardNumber;
+	document.querySelector(".card-name").textContent = lastRecord.name;
+	document.querySelector(".exp-mm").textContent = lastRecord.expMM;
+	document.querySelector(".exp-yy").textContent = lastRecord.expYY;
+	document.querySelector(".cvv").textContent = lastRecord.cvv;
 };
 
 // function to inset data on card while user types
@@ -46,7 +45,6 @@ creditCardInput.addEventListener("keyup", function (event) {
 	document.querySelector(".card-number").textContent = formattedText;
 	event.target.value = formattedText;
 });
-
 
 // update card Expiry MM date
 const cardExMM = document.getElementById("card-form-mm");
@@ -75,7 +73,6 @@ cardCVV.addEventListener("keyup", function (event) {
 	event.target.value = formattedText;
 });
 
-
 // submit form
 const cardForm = document.getElementById("card-form");
 cardForm.addEventListener("submit", async function (event) {
@@ -83,8 +80,21 @@ cardForm.addEventListener("submit", async function (event) {
 	console.log("submitted", event);
 
 	// get the count of the json data
-	const data = await readJSONData();
+	let data = await readJSONData();
 	console.log("data count", data.length);
+
+	// const response = await fetch(jsonFileURL);
+	const sessionData = sessionStorage.getItem("ccddData");
+
+	if (sessionData == undefined || sessionData == null || sessionData == "") {
+		// create empty data in the sessionStorage
+		sessionStorage.setItem("ccddData", null);
+
+		//throw new Error("Failed to fetch JSON data");
+	}
+	if (sessionData != null && sessionData.length > 0) {
+		data = JSON.parse(sessionData);
+	}
 
 	const formData = {
 		id: data.length + 1,
@@ -98,11 +108,12 @@ cardForm.addEventListener("submit", async function (event) {
 
 	console.log("formData", formData);
 
-	// save the formData in data.json file
-	const response = await updateJSONData(formData, jsonFileURL);
+	// save the formData in data.json file / from settion storage
+	const response = await updateJSONData(formData, data, jsonFileURL);
 	console.log("save response", response);
-});
 
+    
+});
 
 // function to format numbers only text inputs
 function formatCreditCardNumbers(inputText, maxNum) {
@@ -122,39 +133,57 @@ function formatCreditCardNumbers(inputText, maxNum) {
 }
 
 // Function to update JSON data
-async function updateJSONData(updatedData, jsonFileURL) {
+async function updateJSONData(updatedData, oldData, jsonFileURL) {
 	try {
 		// Fetch the JSON file
-		const response = await fetch(jsonFileURL);
+		//const response = await fetch(jsonFileURL);
+		const response = sessionStorage.getItem("ccddData");
 
-		if (!response.ok) {
-			throw new Error("Failed to fetch JSON data");
+		console.log("oldData...", oldData);
+		console.log("updatedData...", updatedData);
+
+		if (oldData.length > 0) {
+			//let data = await readJSONData();
+			// Parse the JSON response
+			const jsonData = oldData;
+
+			console.log("jsonData", jsonData);
+			// // Update the JSON data as needed
+			// // For example, add a new item to an array
+			jsonData.push(updatedData);
+			console.log("jsonData2", jsonData);
+
+			// Convert the updated data back to a JSON string
+			const updatedJSON = jsonData;
+
+			console.log("updatedJSON", updatedJSON);
+
+			//check if value is stored in session storage
+			// if set, remove it and save the new file
+
+			// save the data in session storage
+			const sessionRes = sessionStorage.setItem(
+				"ccddData",
+				JSON.stringify(updatedJSON)
+			);
+
+			console.log("sessionRes", sessionRes);
+
+			// get session storage
+			const getSessionStorage = sessionStorage.getItem("ccddData");
+			console.log("getSessionStorage", getSessionStorage);
+			const jsonRes = JSON.parse(getSessionStorage);
+			console.log("jsonRes", jsonRes);
+
+			//verify that item was saved
+			const verify = jsonRes.filter((item) => {
+				return item.id == updatedData.id;
+			});
+
+			console.log("verify", verify);
+			if (verify != null && verify.length > 0) return true;
+			return false;
 		}
-
-		// Parse the JSON response
-		const jsonData = await response.json();
-
-		// Update the JSON data as needed
-		// For example, add a new item to an array
-		jsonData.push(updatedData);
-
-		// Convert the updated data back to a JSON string
-		const updatedJSON = JSON.stringify(jsonData);
-
-		// Send a PUT request to update the JSON file on the server
-		const updateResponse = await fetch(jsonFileURL, {
-			method: "PUT",
-			body: updatedJSON,
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-
-		if (!updateResponse.ok) {
-			throw new Error("Failed to update JSON data");
-		}
-
-		console.log("JSON data updated successfully");
 	} catch (error) {
 		console.error(error);
 	}
