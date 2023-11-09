@@ -117,6 +117,7 @@ cardForm.addEventListener("submit", async function (event) {
 
 });
 
+// function to toggle the complete page
 const toggleComplete = (isComplete) => {
     const formEl = document.querySelector('#card-form')
     const thankYouEl = document.querySelector('.complete-wrap')
@@ -125,10 +126,19 @@ const toggleComplete = (isComplete) => {
         formEl.style.display = 'none'
         thankYouEl.style.display = 'flex'
     }else{
-        formEl.style.display = 'flex'
+        formEl.style.display = 'block'
         thankYouEl.style.display = 'none'
     }
 }
+
+// show the form upon completion
+const continueBtn = document.querySelector('#continue-btn')
+continueBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const showComplete = false;
+    toggleComplete(showComplete)
+})
 
 // function to format numbers only text inputs
 function formatCreditCardNumbers(inputText, maxNum) {
