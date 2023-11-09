@@ -76,6 +76,34 @@ cardCVV.addEventListener("keyup", function (event) {
 });
 
 
+// submit form
+const cardForm = document.getElementById("card-form");
+cardForm.addEventListener("submit", async function (event) {
+	event.preventDefault();
+	console.log("submitted", event);
+
+	// get the count of the json data
+	const data = await readJSONData();
+	console.log("data count", data.length);
+
+	const formData = {
+		id: data.length + 1,
+		name: document.querySelector("#card-form-name").value,
+		cardNumber: document.querySelector("#card-form-number").value,
+		expMM: document.querySelector("#card-form-mm").value,
+		expYY: document.querySelector("#card-form-yy").value,
+		cvv: document.querySelector("#card-form-cvv").value,
+		isDummy: false,
+	};
+
+	console.log("formData", formData);
+
+	// save the formData in data.json file
+	const response = await updateJSONData(formData, jsonFileURL);
+	console.log("save response", response);
+});
+
+
 // function to format numbers only text inputs
 function formatCreditCardNumbers(inputText, maxNum) {
 	if (inputText.length > maxNum) {
