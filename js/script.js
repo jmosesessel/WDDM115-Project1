@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function (event) {
 	console.log("page loaded, calling readJSON function");
 
-	// call function to load the last record in the json data
+	// call function to load the default record in the json data
 	await loadDummyDataOnCard();
 });
 
@@ -14,15 +14,15 @@ async function readJSONData() {
 	return data;
 }
 
-// load the last record in the cards on page load
+// load the default record in the cards on page load
 const loadDummyDataOnCard = async () => {
 	// read the json data
 	const data = await readJSONData();
-	console.log("data", data);
+	//console.log("data", data);
 
 	// get the record with 'isDummy' =  true
 	const lastRecord = await data.filter((item) => item.isDummy == true)[0];
-	console.log("lastRecord", lastRecord);
+	//console.log("lastRecord", lastRecord);
 	document.querySelector(".card-number").textContent = lastRecord.cardNumber;
 	document.querySelector(".card-name").textContent = lastRecord.name;
 	document.querySelector(".exp-mm").textContent = lastRecord.expMM;
@@ -77,11 +77,11 @@ cardCVV.addEventListener("keyup", function (event) {
 const cardForm = document.getElementById("card-form");
 cardForm.addEventListener("submit", async function (event) {
 	event.preventDefault();
-	console.log("submitted", event);
+	//console.log("submitted", event);
 
 	// get the count of the json data
 	let data = await readJSONData();
-	console.log("data count", data.length);
+	//console.log("data count", data.length);
 
 	// const response = await fetch(jsonFileURL);
 	const sessionData = sessionStorage.getItem("ccddData");
@@ -106,11 +106,11 @@ cardForm.addEventListener("submit", async function (event) {
 		isDummy: false,
 	};
 
-	console.log("formData", formData);
+	//console.log("formData", formData);
 
 	// save the formData in data.json file / from settion storage
 	const response = await updateJSONData(formData, data, jsonFileURL);
-	console.log("save response", response);
+	//console.log("save response", response);
 
     // display the thank you page and hide the form n success
     toggleComplete(response)
@@ -138,6 +138,9 @@ continueBtn.addEventListener('click', (event) => {
 
     const showComplete = false;
     toggleComplete(showComplete)
+
+    // reload page
+    window.location.reload()
 })
 
 // function to format numbers only text inputs
