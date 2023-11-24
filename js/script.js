@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async function (event) {
 	await loadDummyDataOnCard();
 });
 
+let isError = false;
 const jsonFileURL = "./js/data.json";
 
 // read the JSON data
@@ -73,12 +74,16 @@ cardCVV.addEventListener("keyup", function (event) {
 	event.target.value = formattedText;
 });
 
+
+
 // submit form
 const cardForm = document.getElementById("card-form");
 cardForm.addEventListener("submit", async function (event) {
 	event.preventDefault();
 	//console.log("submitted", event);
-
+	validateForm()
+	if(isError)
+		return;
 	// get the count of the json data
 	let data = await readJSONData();
 	//console.log("data count", data.length);
@@ -112,36 +117,103 @@ cardForm.addEventListener("submit", async function (event) {
 	const response = await updateJSONData(formData, data, jsonFileURL);
 	//console.log("save response", response);
 
-    // display the thank you page and hide the form n success
-    toggleComplete(response)
-
+	// display the thank you page and hide the form n success
+	toggleComplete(response);
 });
+
+
+
+// function to display help
+const helpIcon = document.querySelector(".help-icon-wrap img");
+helpIcon.addEventListener("click", (event) => {
+	console.log("show help");
+	showHelp();
+});
+// function to display help
+const closeIcon = document.querySelector(".close-wrap span");
+closeIcon.addEventListener("click", (event) => {
+	console.log("show help");
+	hideHelp();
+});
+// show Help Box
+const showHelp = () => {
+	const helpBox = document.querySelector(".help-box-wrap");
+	helpBox.style.display = "flex";
+};
+// hide Help Box
+const hideHelp = () => {
+	const helpBox = document.querySelector(".help-box-wrap");
+	helpBox.style.display = "none";
+};
+
+// validate form on submit
+const validateForm = () => {
+	isError = false
+	console.log('validating...')
+	const inputBoxes = document.querySelectorAll('input')
+	inputBoxes.forEach(box => {
+		console.log('box value', box.value)
+		if(box.value == null || box.value == ''){
+			console.log('error', box.value)
+			isError = true
+		}
+
+	});
+
+	// display the error message
+	const msgBox = document.querySelector('.msg')
+	msgBox.innerHTML = 'Ooops! All fields are required. Check and try again'
+	if(isError)
+		showError()
+	else
+		hideError();
+	
+}
+
+// function to close feedback
+const feedbackCloseIcon = document.querySelector(".feedback-close-wrap span");
+feedbackCloseIcon.addEventListener("click", (event) => {
+	console.log("hide error");
+	hideError();
+});
+// display error box
+const showError = () => {
+	const feedbackBox = document.querySelector(".feedback-box-wrap");
+	feedbackBox.style.display = "flex";
+};
+
+// display error box
+const hideError = () => {
+	const feedbackBox = document.querySelector(".feedback-box-wrap");
+	feedbackBox.style.display = "none";
+	isError = false;
+};
 
 // function to toggle the complete page
 const toggleComplete = (isComplete) => {
-    const formEl = document.querySelector('#card-form')
-    const thankYouEl = document.querySelector('.complete-wrap')
+	const formEl = document.querySelector("#card-form");
+	const thankYouEl = document.querySelector(".complete-wrap");
 
-    if(isComplete){
-        formEl.style.display = 'none'
-        thankYouEl.style.display = 'flex'
-    }else{
-        formEl.style.display = 'block'
-        thankYouEl.style.display = 'none'
-    }
-}
+	if (isComplete) {
+		formEl.style.display = "none";
+		thankYouEl.style.display = "flex";
+	} else {
+		formEl.style.display = "block";
+		thankYouEl.style.display = "none";
+	}
+};
 
 // show the form upon completion
-const continueBtn = document.querySelector('#continue-btn')
-continueBtn.addEventListener('click', (event) => {
-    event.preventDefault();
+const continueBtn = document.querySelector("#continue-btn");
+continueBtn.addEventListener("click", (event) => {
+	event.preventDefault();
 
-    const showComplete = false;
-    toggleComplete(showComplete)
+	const showComplete = false;
+	toggleComplete(showComplete);
 
-    // reload page
-    window.location.reload()
-})
+	// reload page
+	window.location.reload();
+});
 
 // function to format numbers only text inputs
 function formatCreditCardNumbers(inputText, maxNum) {
