@@ -333,6 +333,27 @@ body{
     transform: rotate(266deg);
 }
 
+.footer-wrap {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px dashed #270E38;
+    height: 3rem;
+}
+.footer-wrap h5{
+    font-size: 0.7rem;
+}
+.footer-wrap img{
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+
+}
+.footer-wrap img:hover {
+    transform: rotate(45deg);
+}
 
 
 
