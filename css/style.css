@@ -355,6 +355,48 @@ body{
     transform: rotate(45deg);
 }
 
+.feedback-box-wrap{
+    display: none;
+    justify-content: center;
+    position: absolute;
+    top: 2rem;
+    z-index: 5;
+    width: 100%;
+}
+.feedback-box{
+    display: flex;
+    z-index: 5;
+    width: 21rem;
+    background: #e9635a;
+    border-radius: 1rem;
+    flex-direction: column;
+    color: white;
+    padding: 1rem;
+}
+.feedback-close-wrap{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #270E38;
+}
+.feedback-close-wrap span{
+    color: #ebebec;
+    cursor: pointer;
+    width: 1.5rem;
+    display: flex;
+    justify-content: center;
+    height: 1.5rem;
+    border-radius: 56787656px;
+    align-items: center;
+    border: 1px solid;
+    padding: 0.1rem;
+    margin-bottom: 0.5rem;
+}
+.feedback-box .msg{
+    font-size: 0.7rem;
+    margin-top: 1rem;
+}
+
+
 
 
 
