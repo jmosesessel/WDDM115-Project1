@@ -314,3 +314,96 @@ body{
     }
 }
 
+.success-message {
+    margin-bottom: 2.5rem;
+    color: gray;
+    font-size: 0.9rem;
+ }
+ .help-icon-wrap{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+ }
+ .help-icon-wrap img {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+.help-icon-wrap img:hover {
+    transform: rotate(266deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
