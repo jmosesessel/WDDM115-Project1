@@ -17,187 +17,266 @@
 			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap"
 			rel="stylesheet"
 		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"
+		/>
 		<link rel="stylesheet" href="./css/style.css" />
 		<title>WDDM-114 - Project 1 Collaboration - Group 8</title>
 	</head>
-	<body>
-		<main class="main-container">
+	<body class="min-vh-100">
+		<div class="container-fluid m-0 p-0 d-flex flex-column">
 			<!-- Card Section Start -->
 			<!--add left side card back-->
-			<section class="left-side">
-				<figure class="card-back card">
-					<img
-						class="card-back-bg card-bg"
-						src="./images/bg-card-back.png"
-						alt="card back side"
-					/>
-					<h3 class="cvv">000</h3>
-				</figure>
-				<!--add front side card-->
-				<figure class="card-front card">
-					<img
-						class="card-front-bg card-bg"
-						src="./images/bg-card-front.png"
-						alt="card front side"
-					/>
-					<!--add card logo-->
-					<img
-						class="card-logo"
-						src="./images/card-logo.svg"
-						alt=""
-					/>
-					<!--add card number,name,expiry-->
-					<h3 class="card-number">0000 0000 0000 0000</h3>
-					<div class="card-name-expiry-wrap">
-						<h4 class="card-name">Jane Appleseed</h4>
-						<div class="card-expiry-wrap">
-							<h4 class="exp-mm">00</h4>
-							/
-							<h4 class="exp-yy">00</h4>
-						</div>
-					</div>
-				</figure>
-			</section>
-			<!-- Card Section End -->
-
-			<section class="right-side">
-				<div class="help-icon-wrap">
-					<!--added header help image-->
-					<img src="./images/help-48.png" alt="" />
-				</div>
-				<!-- Form Start -->
-				<!--add card form -->
-				<form id="card-form" class="card-form" action="">
-					<form-group>
-						<label for="card-form-name">Card Holder Name</label>
-						<input
-							onkeyup="updateCardName()"
-							type="text"
-							name="card-form-name"
-							id="card-form-name"
-							autocomplete="off"
-							placeholder="eg. Jane Appleseed"
-							
+			<div class="row align-items-center">
+				<section class="left-side col-12 col-md-12 col-lg-3">
+					<figure class="card-back figure">
+						<img
+							class="card-back-bg card-bg"
+							src="./images/bg-card-back.png"
+							alt="card back side"
 						/>
-					</form-group>
-					<form-group>
-						<!--add number on card form -->
-						<label for="card-form-number">Card Number</label>
-						<input
-							type="text"
-							name="card-form-number"
-							id="card-form-number"
-							minlength="0"
-							maxlength="20"
-							autocomplete="off"
-							placeholder="eg. 1234567890123456"
-							
+						<h3 class="cvv">000</h3>
+					</figure>
+					<!--add front side card-->
+					<figure class="card-front figure">
+						<img
+							class="card-front-bg card-bg"
+							src="./images/bg-card-front.png"
+							alt="card front side"
 						/>
-					</form-group>
-					<!--add card expiry-->
-					<div class="card-form-exp-cvv-wrap">
-						<form-group class="card-form-exp-wrap">
-							<label for="card-form-mm">Exp. Date (MM/YY)</label>
-							<div class="card-exp-input-wrap">
-								<input
-									type="text"
-									name="card-form-mm"
-									id="card-form-mm"
-									placeholder="MM"
-									minlength="0"
-									maxlength="2"
-									autocomplete="off"
-									
-								/>
-
-								<input
-									type="text"
-									name="card-form-yy"
-									id="card-form-yy"
-									placeholder="YY"
-									minlength="0"
-									maxlength="2"
-									autocomplete="off"
-									
-								/>
+						<!--add card logo-->
+						<img
+							class="card-logo"
+							src="./images/card-logo.svg"
+							alt=""
+						/>
+						<!--add card number,name,expiry-->
+						<h3 class="card-number">0000 0000 0000 0000</h3>
+						<div class="card-name-expiry-wrap">
+							<h4 class="card-name">Jane Appleseed</h4>
+							<div class="card-expiry-wrap">
+								<h4 class="exp-mm">00</h4>
+								/
+								<h4 class="exp-yy">00</h4>
 							</div>
-						</form-group>
-						<!--add cvv in card-->
+						</div>
+					</figure>
+				</section>
+				<!-- Card Section End -->
 
-						<form-group class="card-form-cvv-wrap">
-							<label for="card-form-cvv">CVV</label>
+				<section class="right-side col-12 col-md-12 col-lg-9">
+					<!-- End Header for help icon -->
+					<!-- Form Start -->
+					<!--add card form -->
+					<form id="card-form" class="card-form" action="">
+						<!-- Header for help icon -->
+						<div class="help-icon-wrap">
+							<img
+								data-bs-toggle="modal"
+								data-bs-target="#exampleModal"
+								src="./images/help-48.png"
+								alt=""
+							/>
+						</div>
+						<form-group>
+							<label for="card-form-name" class="form-label"
+								>Card Holder Name</label
+							>
 							<input
+								onkeyup="updateCardName()"
+								class="form-control"
 								type="text"
-								name="card-form-cvv"
-								id="card-form-cvv"
-								placeholder="eg. 123"
-								minlength="0"
-								maxlength="3"
+								name="card-form-name"
+								id="card-form-name"
 								autocomplete="off"
-								
+								placeholder="eg. Jane Appleseed"
 							/>
 						</form-group>
-					</div>
-					<!--add confirm button-->
-					<div class="confirm-button-wrap">
-						<button id="submit-btn" class="button" type="submit">
-							Confirm
+						<form-group>
+							<!--add number on card form -->
+							<label for="card-form-number" class="form-label"
+								>Card Number</label
+							>
+							<input
+								type="text"
+								name="card-form-number"
+								id="card-form-number"
+								class="form-control"
+								minlength="0"
+								maxlength="20"
+								autocomplete="off"
+								placeholder="eg. 1234567890123456"
+							/>
+						</form-group>
+						<!--add card expiry-->
+						<div class="card-form-exp-cvv-wrap">
+							<form-group class="card-form-exp-wrap">
+								<label for="card-form-mm" class="form-label"
+									>Exp. Date (MM/YY)</label
+								>
+								<div class="card-exp-input-wrap">
+									<input
+										type="text"
+										name="card-form-mm"
+										id="card-form-mm"
+										class="form-control"
+										placeholder="MM"
+										minlength="0"
+										maxlength="2"
+										autocomplete="off"
+									/>
+
+									<input
+										type="text"
+										name="card-form-yy"
+										id="card-form-yy"
+										class="form-control"
+										placeholder="YY"
+										minlength="0"
+										maxlength="2"
+										autocomplete="off"
+									/>
+								</div>
+							</form-group>
+							<!--add cvv in card-->
+
+							<form-group class="card-form-cvv-wrap">
+								<label for="card-form-cvv" class="form-label"
+									>CVV</label
+								>
+								<input
+									type="text"
+									name="card-form-cvv"
+									id="card-form-cvv"
+									class="form-control"
+									placeholder="eg. 123"
+									minlength="0"
+									maxlength="3"
+									autocomplete="off"
+								/>
+							</form-group>
+						</div>
+						<!--add confirm button-->
+						<div class="confirm-button-wrap">
+							<button
+								id="submit-btn btn w-100"
+								class="button"
+								type="submit"
+							>
+								Confirm
+							</button>
+						</div>
+					</form>
+					<!-- Form End -->
+
+					<!--  add Start Thank You Box -->
+					<div class="complete-wrap">
+						<svg
+							class="complete-check"
+							width="80"
+							height="80"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<circle cx="40" cy="40" r="40" fill="url(#a)" />
+							<path
+								d="M28 39.92 36.08 48l16-16"
+								stroke="#fff"
+								stroke-width="3"
+							/>
+							<defs>
+								<linearGradient
+									id="a"
+									x1="-23.014"
+									y1="11.507"
+									x2="0"
+									y2="91.507"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stop-color="#6348FE" />
+									<stop offset="1" stop-color="#610595" />
+								</linearGradient>
+							</defs>
+						</svg>
+
+						<h2 class="thank-you-text">Thank you!</h2>
+						<p class="success-message">
+							We've added your card details
+						</p>
+						<button
+							id="continue-btn"
+							class="button btn w-100"
+							type="submit"
+						>
+							Continue
 						</button>
 					</div>
-				</form>
-				<!-- Form End -->
+					<!-- add end thank you box -->
 
-				<!--  add Start Thank You Box -->
-				<div class="complete-wrap">
-					<svg
-						class="complete-check"
-						width="80"
-						height="80"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<circle cx="40" cy="40" r="40" fill="url(#a)" />
-						<path
-							d="M28 39.92 36.08 48l16-16"
-							stroke="#fff"
-							stroke-width="3"
-						/>
-						<defs>
-							<linearGradient
-								id="a"
-								x1="-23.014"
-								y1="11.507"
-								x2="0"
-								y2="91.507"
-								gradientUnits="userSpaceOnUse"
-							>
-								<stop stop-color="#6348FE" />
-								<stop offset="1" stop-color="#610595" />
-							</linearGradient>
-						</defs>
-					</svg>
+					<!-- Start Footer section -->
+					<div class="footer-wrap d-flex">
+						<h5 class="copyright">
+							&copy;2023. All rights reserved.
+						</h5>
+						<div class="social-wrap">
+							<img src="./images/facebook-48.png" alt="" />
+							<img src="./images/twitter-48.png" alt="" />
+							<img src="./images/linkedin-48.png" alt="" />
+						</div>
+					</div>
+					<!-- Start Footer section -->
+				</section>
+			</div>
+		</div>
 
-					<h2 class="thank-you-text">Thank you!</h2>
-					<p class="success-message">We've added your card details</p>
-					<button id="continue-btn" class="button" type="submit">
-						Continue
-					</button>
-				</div>
-				<!-- add end thank you box -->
-
-				<div class="footer-wrap">
-					<!--added social media icon-->
-					<h5 class="copyright">&copy;2023. All rights reserved.</h5>
-					<div class="social-wrap">
-						<img src="./images/facebook-48.png" alt="" />
-						<img src="./images/twitter-48.png" alt="" />
-						<img src="./images/linkedin-48.png" alt="" />
+		<!-- Help Modal -->
+		<div
+			class="modal fade"
+			id="exampleModal"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1
+							class="modal-title fs-5 text-primary"
+							id="exampleModalLabel"
+						>
+							Help
+						</h1>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Illo, debitis qui aspernatur id assumenda culpa, commodi
+						hic animi voluptates in labore dolorum, natus sapiente
+						eveniet accusamus quos. Itaque, ullam sapiente.
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-dismiss="modal"
+						>
+							Close
+						</button>
 					</div>
 				</div>
-			</section>
-		</main>
-		<!--added help box-->
-		<div class="help-box-wrap">
+			</div>
+		</div>
+
+		<!-- Help Box -->
+		<!-- <div class="help-box-wrap">
 			<div class="mask"></div>
 			<div class="help-box">
 				<div class="close-wrap">
@@ -210,11 +289,36 @@
 					accusamus quos. Itaque, ullam sapiente.
 				</div>
 			</div>
+		</div> -->
+		<!-- End Help Box -->
+
+		<!-- Start Error Box using Bootstrap Toast -->
+		<div class="toast-container position-fixed bottom-0 end-0 p-3 ">
+			<div
+				id="liveToast"
+				class="toast bg-danger"
+				role="alert"
+				aria-live="assertive"
+				aria-atomic="true"
+			>
+				<div class="toast-header">
+					<strong class="me-auto">Error</strong>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="toast"
+						aria-label="Close"
+					></button>
+				</div>
+				<div class="toast-body">
+					<div class="msg text-white"></div>
+				</div>
+			</div>
 		</div>
+		<!-- End Error Box using Bootstrap Toast -->
 
 		<!-- Feedback Box -->
-		<div class="feedback-box-wrap">
-			<!-- <div class="mask"></div> -->
+		<!-- <div class="feedback-box-wrap">
 			<div class="feedback-box">
 				<div class="feedback-close-wrap">
 					<h5>Error:</h5>
@@ -222,9 +326,13 @@
 				</div>
 				<div class="msg"></div>
 			</div>
-		</div>
+		</div> -->
 		<!-- End Feedback Box -->
-
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+			crossorigin="anonymous"
+		></script>
 		<script src="./js/script.js"></script>
 	</body>
 </html>
