@@ -107,6 +107,9 @@ body{
     justify-content: center;
     height: 100%;
  }
+ .figure{
+    cursor: pointer;
+ }
  figure.card-back {
     display: flex;
     justify-content: end;
@@ -281,6 +284,74 @@ body{
     font-size: 0.7rem;
     margin-top: 1rem;
 }
+
+/* Define the shaking animation */
+@keyframes shakeBtn {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
+  
+  /* Apply the shaking animation to the button when the 'shake' class is added */
+  .shake {
+    animation: shakeBtn 0.6s ease-in-out;
+  }
+
+/* Define the bouncing animation */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  .bounce {
+    animation: bounce 0.5s infinite;
+  }
+
+/* Define the scale animation */
+@keyframes scaleHelp {
+    0%, 100% { scale: 1; }
+    50% { scale: 1.5; }
+  }
+  .scale-help {
+    animation: scaleHelp 0.5s ease-in;
+  }
+
+  @keyframes scaleFrontCard {
+    0%, 100% { scale: 1; }
+    50% { scale: 1.1; }
+  }
+  .scale-front-card {
+    animation: scaleFrontCard 0.5s ease-in;
+  }
+
+  @keyframes scaleBackCard {
+    0%, 100% { scale: 1; }
+    50% { scale: 1.1; }
+  }
+  .scale-back-card {
+    animation: scaleBackCard 0.5s ease-in;
+  }
+
+  @keyframes scaleCheckIcon {
+    0%{ scale: 0.2; }
+    20%{ scale: 0.4; }
+    30%{ scale: 0.6; }
+    40% { scale: 0.8; }
+    50%{ scale: 1; }
+    60%{ scale: 1.1; }
+    70%{ scale: 1.2; }
+    80%{ scale: 1.3; }
+    90%{ scale: 1.2; }
+    100%{ scale: 1; }
+  }
+  .scale-complete-check {
+    animation: scaleCheckIcon 0.5s ease-in-out;
+  }
+
+
+
  /*End Generic Styles */
 
  /* Media Query for Mobile - Extra Small (xs) */
@@ -449,3 +520,4 @@ body{
         height: 100dvh;
     }
 }
+

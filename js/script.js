@@ -75,8 +75,8 @@ cardCVV.addEventListener("keyup", function (event) {
 });
 
 // submit form
-const cardForm = document.getElementById("card-form");
-cardForm.addEventListener("submit", async function (event) {
+//const cardForm = document.getElementById("card-form");
+$("#card-form").on("submit", async function (event) {
 	event.preventDefault();
 	//console.log("submitted", event);
 	validateForm();
@@ -157,8 +157,12 @@ const validateForm = () => {
 	// display the error message
 	const msgBox = document.querySelector(".msg");
 	msgBox.innerHTML = "Ooops! All fields are required. Check and try again";
-	if (isError) showError();
-	else hideError();
+	if (isError) {
+		addShakeClass(".submit-btn");
+		showError();
+	} else {
+		// hideError();
+	}
 };
 
 // function to close feedback
@@ -190,6 +194,7 @@ const toggleComplete = (isComplete) => {
 	const thankYouEl = document.querySelector(".complete-wrap");
 
 	if (isComplete) {
+		scaleCheckIcon();
 		formEl.style.display = "none";
 		thankYouEl.style.display = "flex";
 	} else {
@@ -283,3 +288,92 @@ async function updateJSONData(updatedData, oldData, jsonFileURL) {
 		console.error(error);
 	}
 }
+
+// ANIMATIONS
+
+// add or remove the shake class to / from button
+const addShakeClass = (element) => {
+	console.log("in addShakeClass", element);
+	const el = $(element);
+	console.log("shake el", el);
+	el.addClass("shake");
+	//remove the class after 1sec
+	setTimeout(() => {
+		el.removeClass("shake");
+	}, 1000);
+};
+
+// bounce element/icon on hover
+
+$(".soc-icon1").mouseenter(() => {
+	$(this).addClass("bounce");
+	console.log("mouseentered", $(this));
+	$(".soc-icon1").addClass("bounce");
+});
+$(".soc-icon1").mouseleave(() => {
+	console.log("mouseleave", $(this));
+	$(".soc-icon1").removeClass("bounce");
+});
+$(".soc-icon2").mouseenter(() => {
+	console.log("mouseentered", $(this));
+	$(".soc-icon2").addClass("bounce");
+});
+$(".soc-icon2").mouseleave(() => {
+	console.log("mouseleave", $(this));
+	$(".soc-icon2").removeClass("bounce");
+});
+$(".soc-icon3").mouseenter(() => {
+	console.log("mouseentered", $(this));
+	$(".soc-icon3").addClass("bounce");
+});
+$(".soc-icon3").mouseleave(() => {
+	console.log("mouseleave", $(this));
+	$(".soc-icon3").removeClass("bounce");
+});
+
+// scale help icon
+$(".help-icon").mouseenter(() => {
+	console.log("mouseentered", $(this));
+	$(".help-icon").addClass("scale-help");
+});
+$(".help-icon").mouseleave(() => {
+	console.log("mouseleave", $(this));
+	$(".help-icon").removeClass("scale-help");
+});
+
+//scale front card
+$(".card-front").mouseenter(() => {
+	console.log("mouseentered", $(this));
+	$(".card-front").addClass("scale-front-card");
+});
+$(".card-front").mouseleave(() => {
+	console.log("mouseleave", $(this));
+	$(".card-front").removeClass("scale-front-card");
+});
+
+//scale back card
+$(".card-back").mouseenter(() => {
+	console.log("mouseentered", $(this));
+	$(".card-back").addClass("scale-back-card");
+});
+$(".card-back").mouseleave(() => {
+	console.log("mouseleave", $(this));
+	$(".card-back").removeClass("scale-back-card");
+});
+
+//scale check icon
+const scaleCheckIcon = () => {
+	$(".complete-check").addClass("scale-complete-check");
+	//remove class after 1sec
+	setTimeout(() => {
+		$(".complete-check").removeClass("scale-complete-check");
+	}, 1000);
+};
+// $(".complete-check").ready(() => {
+// 	console.log("mouseentered", $(this));
+// 	$(".complete-check").addClass("scale-complete-check");
+// });
+// $(".complete-check").mouseleave(() => {
+// 	console.log("mouseleave", $(this));
+// 	$(".complete-check").removeClass("scale-complete-check");
+// });
