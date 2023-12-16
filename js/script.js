@@ -37,39 +37,35 @@ const updateCardName = async () => {
 };
 
 // update card number with the format
-const creditCardInput = document.getElementById("card-form-number");
 
-creditCardInput.addEventListener("keyup", function (event) {
+$("#card-form-number").keyup(function (event) {
 	const inputText = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
 	const formattedText = formatCreditCardNumbers(inputText, 16);
-	document.querySelector(".card-number").textContent = formattedText;
+	$(".card-number").html(formattedText)
 	event.target.value = formattedText;
 });
 
 // update card Expiry MM date
-const cardExMM = document.getElementById("card-form-mm");
-cardExMM.addEventListener("keyup", function (event) {
+$("#card-form-mm").keyup(function (event) {
 	const inputText = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
 	const formattedText = formatCreditCardNumbers(inputText, 2);
-	document.querySelector(".exp-mm").textContent = formattedText;
+	$(".exp-mm").html(formattedText)
 	event.target.value = formattedText;
 });
 
 // update card Expiry YY date
-const cardExYY = document.getElementById("card-form-yy");
-cardExYY.addEventListener("keyup", function (event) {
+$("#card-form-yy").keyup(function (event) {
 	const inputText = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
 	const formattedText = formatCreditCardNumbers(inputText, 2);
-	document.querySelector(".exp-yy").textContent = formattedText;
+	$(".exp-yy").html(formattedText) 
 	event.target.value = formattedText;
 });
 
 // update card CVV
-const cardCVV = document.getElementById("card-form-cvv");
-cardCVV.addEventListener("keyup", function (event) {
+$("#card-form-cvv").keyup( function (event) {
 	const inputText = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
 	const formattedText = formatCreditCardNumbers(inputText, 3);
-	document.querySelector(".cvv").textContent = formattedText;
+	$(".cvv").html(formattedText)
 	event.target.value = formattedText;
 });
 
@@ -99,11 +95,11 @@ $("#card-form").on("submit", async function (event) {
 
 	const formData = {
 		id: data.length + 1,
-		name: document.querySelector("#card-form-name").value,
-		cardNumber: document.querySelector("#card-form-number").value,
-		expMM: document.querySelector("#card-form-mm").value,
-		expYY: document.querySelector("#card-form-yy").value,
-		cvv: document.querySelector("#card-form-cvv").value,
+		name: $("#card-form-name").val(),
+		cardNumber: $("#card-form-number").val(),
+		expMM: $("#card-form-mm").val(),
+		expYY: $("#card-form-yy").val(),
+		cvv: $("#card-form-cvv").val(),
 		isDummy: false,
 	};
 
