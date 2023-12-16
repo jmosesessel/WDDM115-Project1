@@ -24,11 +24,11 @@ const loadDummyDataOnCard = async () => {
 	// get the record with 'isDummy' =  true
 	const lastRecord = await data.filter((item) => item.isDummy == true)[0];
 	//console.log("lastRecord", lastRecord);
-	document.querySelector(".card-number").textContent = lastRecord.cardNumber;
-	document.querySelector(".card-name").textContent = lastRecord.name;
-	document.querySelector(".exp-mm").textContent = lastRecord.expMM;
-	document.querySelector(".exp-yy").textContent = lastRecord.expYY;
-	document.querySelector(".cvv").textContent = lastRecord.cvv;
+	$(".card-number").html(lastRecord.cardNumber);
+	$(".card-name").html(lastRecord.name);
+	$(".exp-mm").html(lastRecord.expMM)
+	$(".exp-yy").html(lastRecord.expYY)
+	$(".cvv").html(lastRecord.cvv)
 };
 
 // function to inset data on card while user types
