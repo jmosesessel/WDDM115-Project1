@@ -187,16 +187,16 @@ const showError = () => {
 
 // function to toggle the complete page
 const toggleComplete = (isComplete) => {
-	const formEl = document.querySelector("#card-form");
-	const thankYouEl = document.querySelector(".complete-wrap");
+	const formEl = $("#card-form");
+	const thankYouEl = $(".complete-wrap");
 
 	if (isComplete) {
 		scaleCheckIcon();
-		formEl.style.display = "none";
-		thankYouEl.style.display = "flex";
+		formEl.css('display', "none");
+		thankYouEl.css('display',"flex");
 	} else {
-		formEl.style.display = "block";
-		thankYouEl.style.display = "none";
+		formEl.css('display', "block");
+		thankYouEl.css('display', "none");
 	}
 };
 
