@@ -170,7 +170,7 @@ const validateForm = () => {
 // });
 // display error box
 const showError = () => {
-	const toastLiveExample = document.getElementById("liveToast");
+	const toastLiveExample = $("#liveToast");
 	const toastBootstrap =
 		bootstrap.Toast.getOrCreateInstance(toastLiveExample);
 	toastBootstrap.show();
