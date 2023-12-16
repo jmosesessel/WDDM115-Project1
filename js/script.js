@@ -93,6 +93,7 @@ $("#card-form").on("submit", async function (event) {
 		data = JSON.parse(sessionData);
 	}
 
+	// submit data
 	const formData = {
 		id: data.length + 1,
 		name: $("#card-form-name").val(),
