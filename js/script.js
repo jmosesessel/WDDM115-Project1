@@ -26,15 +26,14 @@ const loadDummyDataOnCard = async () => {
 	//console.log("lastRecord", lastRecord);
 	$(".card-number").html(lastRecord.cardNumber);
 	$(".card-name").html(lastRecord.name);
-	$(".exp-mm").html(lastRecord.expMM)
-	$(".exp-yy").html(lastRecord.expYY)
-	$(".cvv").html(lastRecord.cvv)
+	$(".exp-mm").html(lastRecord.expMM);
+	$(".exp-yy").html(lastRecord.expYY);
+	$(".cvv").html(lastRecord.cvv);
 };
 
 // function to inset data on card while user types
 const updateCardName = async () => {
-	document.querySelector(".card-name").textContent =
-		await document.querySelector("#card-form-name").value;
+	$(".card-name").html(await $("#card-form-name").val());
 };
 
 // update card number with the format
