@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function (event) {
+$(document).ready(async function (event) {
 	console.log("page loaded, calling readJSON function");
 
 	// call function to load the default record in the json data
