@@ -201,8 +201,8 @@ const toggleComplete = (isComplete) => {
 };
 
 // show the form upon completion
-const continueBtn = document.querySelector("#continue-btn");
-continueBtn.addEventListener("click", (event) => {
+const continueBtn = $("#continue-btn");
+continueBtn.click( (event) => {
 	event.preventDefault();
 
 	const showComplete = false;
