@@ -141,11 +141,12 @@ $("#card-form").on("submit", async function (event) {
 const validateForm = () => {
 	isError = false;
 	console.log("validating...");
-	const inputBoxes = document.querySelectorAll("input");
-	inputBoxes.forEach((box) => {
-		console.log("box value", box.value);
-		if (box.value == null || box.value == "") {
-			console.log("error", box.value);
+	const inputBoxes = $('input[type="text"]');
+	console.log('inputs', inputBoxes)
+	inputBoxes.filter(function() {
+		console.log("box value", $(this).val());
+		if ($(this).val() == null || $(this).val() == "" || $(this).val() == undefined) {
+			console.log("error", $(this).val());
 			isError = true;
 		}
 	});
